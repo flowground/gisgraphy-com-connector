@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "properties": {
+        "lat": {
+            "required": true,
+            "type": "number",
+            "format": "double"
+        },
+        "lng": {
+            "required": true,
+            "type": "number",
+            "format": "double"
+        },
+        "format": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "XML",
+                "JSON",
+                "PHP",
+                "RUBY",
+                "PYTHON",
+                "YAML"
+            ],
+            "default": "XML"
+        },
+        "from": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+        },
+        "to": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10
+        },
+        "callback": {
+            "required": false,
+            "type": "string"
+        },
+        "indent": {
+            "required": false,
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

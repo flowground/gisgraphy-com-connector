@@ -1,0 +1,92 @@
+{
+    "type": "object",
+    "properties": {
+        "q": {
+            "required": true,
+            "type": "string"
+        },
+        "allwordsrequired": {
+            "required": true,
+            "type": "boolean",
+            "default": false
+        },
+        "spellchecking": {
+            "required": false,
+            "type": "string"
+        },
+        "lat": {
+            "required": false,
+            "type": "number",
+            "format": "double"
+        },
+        "lng": {
+            "required": false,
+            "type": "number",
+            "format": "double"
+        },
+        "radius": {
+            "required": false,
+            "type": "number",
+            "format": "double",
+            "default": 10000
+        },
+        "suggest": {
+            "type": "boolean",
+            "default": false
+        },
+        "style": {
+            "type": "string",
+            "enum": [
+                "SHORT",
+                "MEDIUM",
+                "LONG",
+                "FULL"
+            ],
+            "default": "MEDIUM"
+        },
+        "country": {
+            "required": false,
+            "type": "string"
+        },
+        "lang": {
+            "required": false,
+            "type": "string"
+        },
+        "format": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "XML",
+                "JSON",
+                "PHP",
+                "RUBY",
+                "PYTHON",
+                "YAML",
+                "ATOM",
+                "GEORSS"
+            ],
+            "default": "XML"
+        },
+        "from": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 1
+        },
+        "to": {
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "default": 10
+        },
+        "callback": {
+            "required": false,
+            "type": "string"
+        },
+        "indent": {
+            "required": false,
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

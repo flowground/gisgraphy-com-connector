@@ -1,0 +1,141 @@
+{
+    "title": "Gisgraphy webservices",
+    "description": "Since 2006, [Gisgraphy](http://www.gisgraphy.com) is a free, open source framework that offers the possibility to do geolocalisation and geocoding via Java APIs or REST webservices. Because geocoding is nothing without data, it provides an easy to use importer that will automatically download and import the necessary (free) data to your local database ([OpenStreetMap](http://www.openstreetmap.org/), [Geonames](http://www.geonames.org/) and [Quattroshapes](http://www.quattroshapes.com/): more than 100 million entries). You can also add your own data with the Web interface or the importer connectors provided. Gisgraphy is production ready, and has been designed to be scalable(load balanced), performant and used in other languages than just java : results can be output in XML, JSON, PHP, Python, Ruby, YAML, GeoRSS, and Atom. One of the most popular GPS tracking System (OpenGTS) also includes a Gisgraphy client...Gisgraphy is a framework. As a result it's flexible and powerful enough to be used in a lot of different use cases. [read more](http://www.gisgraphy.com)\n\n\nif you use the premium servers, you can use the api key to test the webservices\n",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/gisgraphy.com/4.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://free.gisgraphy.com/",
+                    "https://free.gisgraphy.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "api_key": {
+                "label": "api_key (api_key)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "addressparsing": {
+            "main": "./lib/actions/addressparsing.js",
+            "title": "split a raw address into several parts",
+            "description": "The address parser and address standardizer, are part of the Gisgraphy project (free open source worldwide geocoder). Address parsing is the process of dividing a single address string into its individual component parts. Please visit [http://www.address-parser.net](http://www.address-parser.net) for more details ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/addressparsing.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "fulltxtsearch": {
+            "main": "./lib/actions/fulltxtsearch.js",
+            "title": "search for places by text around a GPS point",
+            "description": "The full text service allows you to search for features / places / street and do autocompletion . you can : Specify one or more words search on part of the name (auto completion / suggestion) Search for text or zip code Specify a GPS restriction (promote nearest, not sorted but has an impact on the score), Limit the results to a specific Language, Country, place type, Paginate the results, Specify the output verbosity, Tells if you want the output to be indented, Tells that all words are required or not, The search is case insensitive, use synonyms (Saint/st, ..), separator characters stripping, ...",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/fulltxtsearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "geocode": {
+            "main": "./lib/actions/geocode.js",
+            "title": "Geocode an address",
+            "description": "The Gisgraphy geocoding service allows you to transform postal addresses or other descriptions (a street, a city, a postal code, a country, or a combination) of a location into a (latitude, longitude) coordinate.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/geocode.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "geoloc": {
+            "main": "./lib/actions/geoloc.js",
+            "title": "Geocode an address",
+            "description": "The geolocalisation service allows to search for features around a earth location. you can Specify GPS position, Limit the results to a specific place type (e.g : search all monuments around a point), Limit the results to a specified radius, Paginate the results, Tells if you want the output to be indented (currently, applies only for XML, not JSON for performance reasons. May change in next version)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/geoloc.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "reversegeocode": {
+            "main": "./lib/actions/reversegeocode.js",
+            "title": "Reverse geocode an address",
+            "description": "The Reverse geocoding service allows to search for an address for a given GPS position.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/reversegeocode.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "streetsearch": {
+            "main": "./lib/actions/streetsearch.js",
+            "title": "Geocode an address",
+            "description": "The street service allows you to search for street by GPS position. You can : Specify GPS position, Give the beginning or a part of the name of the street (useful for autocompletion), Limit search to a specific type (e.g : Pedestrian, highway, residential, ... 25 types available), Limit search to a specified radius, Limit search to one way streets,",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/streetsearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
